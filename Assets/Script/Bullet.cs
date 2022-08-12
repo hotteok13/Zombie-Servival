@@ -23,11 +23,17 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Enemy"))
+        if (!other.CompareTag("Block"))
         {
             Instantiate(Resources.Load<GameObject>("WFX_BImpact Wood"), transform.position, transform.rotation);
 
             Destroy(this.gameObject);
+        }
+        if(other.CompareTag("Enemy")&& !other.CompareTag("Block"))
+        {
+            
+           other.transform.GetComponentInParent<AIControl>().health-=20;
+           other.transform.GetComponentInParent<AIControl>().Death();
         }
     }
 }
