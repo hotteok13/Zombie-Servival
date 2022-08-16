@@ -48,7 +48,10 @@ public class AIControl : MonoBehaviour
         }
         
     }
-
+    public void Scene(string name)
+    {
+        Loding.LoadScene(name);
+    }
     void Update()
     {
         if (target != null)
@@ -63,8 +66,9 @@ public class AIControl : MonoBehaviour
         {
             CancelInvoke();
             agent.speed = 0;
-            animator.SetTrigger("Death");
+            animator.Play("Death");
             Destroy(gameObject, 3);
+            Invoke("Scene", 5);
         }
     }
     private void OnTriggerEnter(Collider other)

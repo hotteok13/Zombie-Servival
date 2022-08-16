@@ -49,7 +49,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   origin: {fileID: 4314139334394249027, guid: 6e6b2a63c2fa8f246a99ae2ecc493f61, type: 3}
-  speed: 5
+  speed: 20
 --- !u!65 &3841310504418618611
 BoxCollider:
   m_ObjectHideFlags: 0
