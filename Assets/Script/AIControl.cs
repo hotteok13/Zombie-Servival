@@ -48,9 +48,16 @@ public class AIControl : MonoBehaviour
         }
         
     }
-    public void Scene(string name)
+    public void Exit()
     {
-        Loding.LoadScene(name);
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+        
+#elif UNITY_WEBGL
+        Application.OpenURL("http://google.com");
+#else
+        Application.Quit();
+#endif
     }
     void Update()
     {
@@ -67,8 +74,9 @@ public class AIControl : MonoBehaviour
             CancelInvoke();
             agent.speed = 0;
             animator.Play("Death");
+            Invoke(nameof(Exit), 2);
             Destroy(gameObject, 3);
-            Invoke("Scene", 5);
+            
         }
     }
     private void OnTriggerEnter(Collider other)
