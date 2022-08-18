@@ -12,10 +12,11 @@ public class Control : MonoBehaviour
 
     private CharacterController characterControl;
     private Vector3 moveForce;
+    [SerializeField] float distance = 100.0f;
     [SerializeField] float speed;
     [SerializeField] float gravity = 20.0f;
     [SerializeField] ParticleSystem effect;
-    [SerializeField] GameObject bullet;
+    [SerializeField] LayerMask layer;
 
     void Start()
     {
@@ -33,7 +34,8 @@ public class Control : MonoBehaviour
         {
             SoundSystem.instance.Sound(0);
             effect.Play();
-            Instantiate(bullet, effect.transform.position, effect.transform.rotation);
+            TwpStepRay();
+            
         }
 
         MoveTo(new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical")));
@@ -49,6 +51,7 @@ public class Control : MonoBehaviour
         }
 
         characterControl.Move(moveForce * Time.deltaTime);
+
     }
 
     public void MoveTo(Vector3 direction)
@@ -79,5 +82,32 @@ public class Control : MonoBehaviour
     public float ClampAngle(float angle, float min, float max)
     {
         return Mathf.Clamp(angle, min, max);
+    }
+
+    public void TwpStepRay()
+    {
+        Ray ray;
+        RaycastHit hit;
+        Vector3 target = Vector3.zero;
+
+        ray = Camera.main.ViewportPointToRay(Vector2.one * 0.5f);
+
+        if(Physics.Raycast(ray,out hit, distance))
+        {
+            target = hit.point;
+        }
+        else
+        {
+            target = ray.origin + ray.direction * distance;
+        }
+
+        Vector3 direction = (target - effect.transform.position);
+
+        if (Physics.Raycast(effect.transform.position, direction,out hit,distance, layer))
+        {
+            hit.collider.GetComponentInParent<AIControl>().health -= 20;
+            hit.transform.GetComponentInParent<AIControl>().Death();
+        }
+        
     }
 }
