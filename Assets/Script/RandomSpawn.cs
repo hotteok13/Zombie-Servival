@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class RandomSpawn : MonoBehaviour
 {
@@ -6,9 +7,18 @@ public class RandomSpawn : MonoBehaviour
 
     void Start()
     {
+
+        StartCoroutine(nameof(CreateZombie));
         
-        Instantiate(zombie, RandomPosition(), Quaternion.identity);
-        
+    }
+
+    public IEnumerator CreateZombie()
+    {
+        while (true)
+        {
+            ObjectPool.instance.GetQueue();
+            yield return new WaitForSeconds(10f);
+        }
     }
 
     public Vector3 RandomPosition()

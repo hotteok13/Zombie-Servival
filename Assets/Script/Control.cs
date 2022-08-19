@@ -38,6 +38,7 @@ public class Control : MonoBehaviour
             
         }
 
+        Jump();
         MoveTo(new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical")));
 
         // 바닥과 충돌하지 않았다면
@@ -45,10 +46,7 @@ public class Control : MonoBehaviour
         {
             moveForce.y -= gravity * Time.deltaTime;
         }
-        else
-        {
-            moveForce.y = 0.1f;
-        }
+        
 
         characterControl.Move(moveForce * Time.deltaTime);
 
@@ -84,6 +82,18 @@ public class Control : MonoBehaviour
         return Mathf.Clamp(angle, min, max);
     }
 
+    public void Jump()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            if (characterControl.isGrounded)
+            {
+                moveForce.y = 10f;
+                
+            }
+        }
+    }
+
     public void TwpStepRay()
     {
         Ray ray;
@@ -107,6 +117,9 @@ public class Control : MonoBehaviour
         {
             hit.collider.GetComponentInParent<AIControl>().health -= 20;
             hit.transform.GetComponentInParent<AIControl>().Death();
+
+            Instantiate(effect, hit.transform.position, hit.transform.rotation);
+
         }
         
     }
