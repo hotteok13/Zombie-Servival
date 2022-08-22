@@ -601,9 +601,10 @@ GameObject:
   - component: {fileID: 9132421856104280232}
   - component: {fileID: -5536646581236802745}
   - component: {fileID: -3604363511842452946}
+  - component: {fileID: 6802326313500735378}
   m_Layer: 3
   m_Name: Zombie2
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -659,6 +660,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7ad84da16ad4244380eabe279989007, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 100
 --- !u!195 &-3604363511842452946
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -681,6 +683,20 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!64 &6802326313500735378
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2528521820669636712}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -760432703719941568, guid: f1945f9b3f2a1624f92144865ca5992f, type: 3}
 --- !u!1 &2645041584460131418
 GameObject:
   m_ObjectHideFlags: 0

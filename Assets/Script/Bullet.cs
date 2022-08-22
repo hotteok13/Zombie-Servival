@@ -14,7 +14,7 @@ public class Bullet : MonoBehaviour
         Destroy(gameObject, 3);
     }
 
-
+    
     // Update is called once per frame
     void Update()
     {
@@ -33,7 +33,7 @@ public class Bullet : MonoBehaviour
         {
             
            other.transform.GetComponentInParent<AIControl>().health-=20;
-           other.transform.GetComponentInParent<AIControl>().Death();
+           other.transform.GetComponentInParent<Zombie>().Death();
         }
     }
 }

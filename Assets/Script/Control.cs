@@ -105,6 +105,7 @@ public class Control : MonoBehaviour
         if(Physics.Raycast(ray,out hit, distance))
         {
             target = hit.point;
+            Instantiate(effect, hit.point, hit.transform.rotation);
         }
         else
         {
@@ -115,10 +116,10 @@ public class Control : MonoBehaviour
 
         if (Physics.Raycast(effect.transform.position, direction,out hit,distance, layer))
         {
-            hit.collider.GetComponentInParent<AIControl>().health -= 20;
-            hit.transform.GetComponentInParent<AIControl>().Death();
+            hit.collider.GetComponent<Zombie>().health -= 20;
+            hit.transform.GetComponent<Zombie>().Death();
 
-            Instantiate(effect, hit.transform.position, hit.transform.rotation);
+            
 
         }
         
