@@ -28,6 +28,14 @@ public class Zombie : MonoBehaviour
     void Update()
     {
         agent.SetDestination(character.transform.position);
+        if (animator.GetCurrentAnimatorStateInfo(0).IsName("Death"))
+        {
+            if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1)
+            {
+                ObjectPool.instance.InsertQueue(gameObject);
+                transform.position = ObjectPool.instance.ActivePosition();
+            }
+        }
     }
 
     public void Death()
@@ -37,16 +45,28 @@ public class Zombie : MonoBehaviour
             
             agent.speed = 0;
             animator.Play("Death");
-            transform.position = ObjectPool.instance.ActivePosition();
-            ObjectPool.instance.InsertQueue(gameObject);
+            
 
-            if (animator.GetCurrentAnimatorStateInfo(0).IsName("Death"))
-            {
-                if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1)
-                {
-                    ObjectPool.instance.InsertQueue(gameObject);
-                }
-            }
+            
+        }
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.CompareTag("Character"))
+        {
+            transform.LookAt(character.transform);
+            agent.speed = 0;
+            animator.SetBool("Attack", true);
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Character"))
+        {
+            agent.speed = 3.5f;
+            animator.SetBool("Attack", false);
         }
     }
 }

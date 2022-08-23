@@ -361,7 +361,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4256128433564182751}
   - component: {fileID: 519263903141489763}
-  - component: {fileID: 3447071083818350807}
   m_Layer: 3
   m_Name: ZombieGirl_Pants
   m_TagString: Untagged
@@ -449,20 +448,6 @@ SkinnedMeshRenderer:
     m_Center: {x: 0.0009863675, y: -0.32266435, z: -0.013418734}
     m_Extent: {x: 0.22451816, y: 0.45342514, z: 0.16404743}
   m_DirtyAABB: 0
---- !u!64 &3447071083818350807
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2220695349343034472}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -5534666807296510037, guid: f1945f9b3f2a1624f92144865ca5992f, type: 3}
 --- !u!1 &2246911069240130917
 GameObject:
   m_ObjectHideFlags: 0
@@ -601,7 +586,8 @@ GameObject:
   - component: {fileID: 9132421856104280232}
   - component: {fileID: -5536646581236802745}
   - component: {fileID: -3604363511842452946}
-  - component: {fileID: 6802326313500735378}
+  - component: {fileID: -8337374817246416594}
+  - component: {fileID: -4543924960756259529}
   m_Layer: 3
   m_Name: Zombie2
   m_TagString: Enemy
@@ -683,8 +669,8 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!64 &6802326313500735378
-MeshCollider:
+--- !u!136 &-8337374817246416594
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -693,10 +679,23 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -760432703719941568, guid: f1945f9b3f2a1624f92144865ca5992f, type: 3}
+  m_Radius: 0.5
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 1, z: 0}
+--- !u!65 &-4543924960756259529
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2528521820669636712}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3, y: 2, z: 3}
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!1 &2645041584460131418
 GameObject:
   m_ObjectHideFlags: 0
@@ -1029,7 +1028,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6340069876307547197}
   - component: {fileID: 2132261093812946584}
-  - component: {fileID: 3447071084753919839}
   m_Layer: 3
   m_Name: ZombieGirl_Top
   m_TagString: Untagged
@@ -1124,20 +1122,6 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.0014217794, y: 0.32000136, z: 0.009251267}
     m_Extent: {x: 0.50244343, y: 0.33245993, z: 0.16478688}
   m_DirtyAABB: 0
---- !u!64 &3447071084753919839
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3592012755900239528}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 7931437490057193406, guid: f1945f9b3f2a1624f92144865ca5992f, type: 3}
 --- !u!1 &3679146639202262475
 GameObject:
   m_ObjectHideFlags: 0
@@ -1662,7 +1646,7 @@ MeshCollider:
   m_GameObject: {fileID: 6189372669514622440}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   m_Convex: 1
   m_CookingOptions: 30
@@ -2059,7 +2043,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6538778767115840035}
   - component: {fileID: 4838331034860292974}
-  - component: {fileID: 3447071084636770103}
   m_Layer: 3
   m_Name: ZombieGirl_Body
   m_TagString: Untagged
@@ -2196,20 +2179,6 @@ SkinnedMeshRenderer:
     m_Center: {x: 0.022535414, y: -0.070666075, z: 0.015175439}
     m_Extent: {x: 0.9986702, y: 1.032883, z: 0.19180453}
   m_DirtyAABB: 0
---- !u!64 &3447071084636770103
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8146261098552410057}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -760432703719941568, guid: f1945f9b3f2a1624f92144865ca5992f, type: 3}
 --- !u!1 &8169611890880722251
 GameObject:
   m_ObjectHideFlags: 0

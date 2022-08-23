@@ -7,6 +7,7 @@ public class Control : MonoBehaviour
     [SerializeField] float axisSpeed = 5.0f; // 카메라 x축과 y축의 회전 속도 
     [SerializeField] GameObject eye;
 
+    public int health = 100;
     private float eulerAngleX;
     private float eulerAngleY;
 
@@ -118,9 +119,6 @@ public class Control : MonoBehaviour
         {
             hit.collider.GetComponent<Zombie>().health -= 20;
             hit.transform.GetComponent<Zombie>().Death();
-
-            
-
         }
         
     }
