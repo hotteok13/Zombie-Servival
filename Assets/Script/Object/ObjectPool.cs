@@ -15,7 +15,7 @@ public class ObjectPool : MonoBehaviour
     {
         instance = this;
 
-        for(int i = 0; i < 20; i++)
+        for(int i = 0; i < 19; i++)
         {
             GameObject tempPrefab = Instantiate(zombie, spawn.RandomPosition(), Quaternion.identity);
             queue.Enqueue(tempPrefab);

@@ -22,7 +22,11 @@ public class Zombie : MonoBehaviour
 
     }
 
-    
+    private void OnEnable()
+    {
+        health = 20;
+        //agent.speed = 50;
+    }
 
     // Update is called once per frame
     void Update()
@@ -58,6 +62,16 @@ public class Zombie : MonoBehaviour
             transform.LookAt(character.transform);
             agent.speed = 0;
             animator.SetBool("Attack", true);
+            agent.SetDestination(character.transform.position);
+            if (animator.GetCurrentAnimatorStateInfo(0).IsName("Attack"))
+            {
+                if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1)
+                {
+                    other.GetComponent<Control>().health -= 10;
+                    animator.Rebind();
+
+                }
+            }
         }
     }
 
@@ -65,7 +79,7 @@ public class Zombie : MonoBehaviour
     {
         if (other.CompareTag("Character"))
         {
-            agent.speed = 3.5f;
+            agent.speed = 50f;
             animator.SetBool("Attack", false);
         }
     }
