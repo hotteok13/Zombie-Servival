@@ -28,7 +28,7 @@ public class Control : MonoBehaviour
     }
 
     void Update()
-    {
+    { 
         UpdateRotate(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
 
         if(Input.GetButtonDown("Fire1"))
@@ -118,7 +118,7 @@ public class Control : MonoBehaviour
         if (Physics.Raycast(effect.transform.position, direction,out hit,distance, layer))
         {
             hit.collider.GetComponentInParent<Zombie>().health -= 20;
-            hit.transform.GetComponentInParent<Zombie>().Death();
+            
         }
         
     }
