@@ -1,15 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Control : MonoBehaviour
 {
     [SerializeField] float axisSpeed = 5.0f; // 카메라 x축과 y축의 회전 속도 
     [SerializeField] GameObject eye;
+    [SerializeField] Image bloodScreen;
 
     public int health = 100;
     private float eulerAngleX;
     private float eulerAngleY;
+
+    
 
     private CharacterController characterControl;
     private Vector3 moveForce;
@@ -28,13 +32,21 @@ public class Control : MonoBehaviour
     }
 
     void Update()
-    { 
+    {
+        if (health <= 0)
+        {
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.Confined;
+            GameManager.instance.resultScreen.SetActive(true);
+            Time.timeScale = 0;
+        }
         UpdateRotate(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
 
         if(Input.GetButtonDown("Fire1"))
         {
             SoundSystem.instance.Sound(0);
             effect.Play();
+            
             TwpStepRay();
             
         }
@@ -121,5 +133,17 @@ public class Control : MonoBehaviour
             
         }
         
+    }
+
+    public void ScreenCall()
+    {
+        StartCoroutine(nameof(Damage));
+    }
+
+    public IEnumerator Damage()
+    {
+        bloodScreen.color = new Color(1, 0, 0);
+        yield return new WaitForSeconds(0.1f);
+        bloodScreen.color = Color.clear;
     }
 }

@@ -42,6 +42,7 @@ public class Zombie : MonoBehaviour
             {
                 if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1)
                 {
+                    GameManager.instance.count++;
                     ObjectPool.instance.InsertQueue(gameObject);
                     transform.position = ObjectPool.instance.ActivePosition();
                 }
@@ -70,7 +71,9 @@ public class Zombie : MonoBehaviour
             {
                 if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1)
                 {
-                    GetComponent<Control>().health -= 10;
+                    
+                    character.GetComponent<Control>().ScreenCall();
+                    character.GetComponent<Control>().health -= 20;
                     animator.Rebind();
 
                 }
