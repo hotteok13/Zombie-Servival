@@ -17,7 +17,6 @@ public class GameManager : MonoBehaviour
         instance = this;
     }
 
-    // Update is called once per frame
     void Update()
     {
         playTime.text = "Play Time : " + Time.time.ToString("N2");

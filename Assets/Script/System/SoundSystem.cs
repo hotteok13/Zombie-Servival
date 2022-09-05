@@ -6,6 +6,17 @@ public class SoundSystem : MonoBehaviour
     [SerializeField] AudioClip[] clip;
 
     public static SoundSystem instance;
+
+    public void Awake()
+    {
+        var soundObject = FindObjectsOfType<SoundSystem>();
+
+        if (soundObject.Length > 1)
+        {
+            Destroy(gameObject);
+        }
+    }
+
     void Start()
     {
         if (instance == null)
